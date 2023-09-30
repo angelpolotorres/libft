@@ -6,30 +6,15 @@
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 10:40:01 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/02/15 10:12:06 by apolo-to         ###   ########.fr       */
+/*   Updated: 2023/09/30 15:21:29 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_num_len(long num)
-{
-	size_t	i;
-
-	i = 1;
-	if (num < 0)
-	{
-		num = num * -1;
-		i ++;
-	}
-	while (num > 9)
-	{
-		num = num / 10;
-		i ++;
-	}
-	return (i);
-}
-
+/**
+ * This ft transform a int number to char.
+*/
 static void	ft_num_to_char(long num, char *res, size_t *i)
 {
 	if (num > 9)
@@ -45,10 +30,9 @@ static void	ft_num_to_char(long num, char *res, size_t *i)
 }
 
 /**
- * This ft convert an Int to an string. 
- * Return a string with the result.
- * @param int The number
- * @return a String with the result
+ * This ft transform an int number to an string number to print. 
+ * @param	int n	: The number.
+ * @return	char*	: A pointer to the str.
 */
 char	*ft_itoa(int n)
 {
@@ -57,7 +41,7 @@ char	*ft_itoa(int n)
 	size_t	i;
 
 	num = n;
-	res = malloc(sizeof(char) * (ft_num_len(num) + 1));
+	res = malloc(sizeof(char) * (ft_numlen(num) + 1));
 	if (res == NULL)
 		return (NULL);
 	i = 0;
@@ -65,15 +49,9 @@ char	*ft_itoa(int n)
 	{
 		res[i] = '-';
 		num = num * -1;
-		i ++;
+		i++;
 	}
 	ft_num_to_char(num, res, &i);
 	res[i] = '\0';
 	return (res);
 }
-
-// int	main(void)
-// {
-// 	printf("\n%s", ft_itoa(-34567));
-// 	return (0);
-// }

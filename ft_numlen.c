@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 13:26:34 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/09/30 13:01:45 by apolo-to         ###   ########.fr       */
+/*   Created: 2023/09/30 13:38:56 by apolo-to          #+#    #+#             */
+/*   Updated: 2023/09/30 13:44:39 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * This ft checks if the char argument is an ascii character (0-127).
- * @param	int c	: The char argument.
- * @return	int		: (1) ASCII Char, (0) No ASCII char.
- */
-int	ft_isascii(int c)
+ * This ft counts the number length.
+ * @param	long num	: The number.
+ * @return	size_t		: The length number.
+*/
+size_t	ft_numlen(long num)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	size_t	length;
+
+	length = 1;
+	if (num < 0)
+	{
+		num = num * -1;
+		length++;
+	}
+	while (num > 9)
+	{
+		num = num / 10;
+		length++;
+	}
+	return (length);
 }

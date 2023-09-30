@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 13:26:34 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/09/30 13:01:45 by apolo-to         ###   ########.fr       */
+/*   Created: 2023/09/07 10:48:38 by apolo-to          #+#    #+#             */
+/*   Updated: 2023/09/30 12:56:01 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 /**
- * This ft checks if the char argument is an ascii character (0-127).
- * @param	int c	: The char argument.
- * @return	int		: (1) ASCII Char, (0) No ASCII char.
- */
-int	ft_isascii(int c)
+ * This ft checks if the char is '+' sign or '-' sign.
+ * @param	int c	: Character.
+ * @return	int		: (1) Sign, (0) No sign.
+*/
+int	ft_issign(int c)
 {
-	if (c >= 0 && c <= 127)
+	if (c == '+' || c == '-')
 		return (1);
 	return (0);
 }

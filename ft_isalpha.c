@@ -6,28 +6,20 @@
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:50:07 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/03/16 09:33:55 by apolo-to         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:57:16 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * This ft check if the argument is an alphabet character (a-z and A-Z)
- * This ft is a copy of isalpha() from <ctype.h>
- * @param arg An integer ascii number (97) or a character ('a')
- * @return Return 1 for true and 0 for false.
+ * This ft check if the char argument is an alphabet character (a-z and A-Z)
+ * @param	int c	: The character
+ * @return	int		: (1) Char, (0) No char.
 */
-int	ft_isalpha(int arg)
+int	ft_isalpha(int c)
 {
-	if ((arg >= 'a' && arg <= 'z') || (arg >= 'A' && arg <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	printf("\n%d", ft_isalpha(322));
-// 	printf("\n%d", isalpha(322));
-// 	return (0);
-// }

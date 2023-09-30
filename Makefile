@@ -1,9 +1,21 @@
+# Colors ----------------------------------------------------- #
+# ------------------------------------------------------------ #
+GREEN = \033[0;32m
+END = \033[0m
 
+# Final program ---------------------------------------------- #
+# ------------------------------------------------------------ #
 NAME = libft.a
+PROJECT = libft
+
+# Source files ----------------------------------------------- #
+# ------------------------------------------------------------ #
+SRCS = $(SRC_FILES)
 
 SRC_DIR = .
-SRC_FILES = $(addprefix $(SRC_DIR)/, $(SRC)) 
-SRC =	ft_isalpha.c \
+SRC_FILES = $(addprefix $(SRC_DIR)/, $(SRC_CFILES)) 
+SRC_CFILES = \
+		ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
 		ft_isascii.c \
@@ -37,57 +49,68 @@ SRC =	ft_isalpha.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
+		ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+		ft_intlimits.c \
+		ft_isspace.c \
+		ft_issign.c \
+		ft_numlen.c \
+		ft_possnum.c \
 
-SRC_BONUS_FILES = $(addprefix $(SRC_DIR)/, $(SRC_BONUS))
-SRC_BONUS =	ft_lstnew_bonus.c \
-			ft_lstadd_front_bonus.c \
-			ft_lstsize_bonus.c \
-			ft_lstlast_bonus.c \
-			ft_lstadd_back_bonus.c \
-			ft_lstdelone_bonus.c \
-			ft_lstclear_bonus.c \
-			ft_lstiter_bonus.c \
-			ft_lstmap_bonus.c \
+# Object files ----------------------------------------------- #
+# ------------------------------------------------------------ #
+OBJ_DIR = ./build
+OBJ_LIBFT_DIR = $(OBJ_DIR)/libft
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_LIBFT_DIR)/%.o, $(SRCS))
 
-OBJ_DIR = .
-OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
-OBJ_BONUS_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_BONUS_FILES))
-# patsubst (Replace strings) - $(patsubst old_value, new_value, text)
+# Header files ----------------------------------------------- #
+# ------------------------------------------------------------ #
+INCL_DIR = .
+INCL_FILES = $(INCL_DIR)/libft.h
 
-INC_FILES = libft.h \
-
-# --------------------------- COMPILERS AND FLAGS --------------------------- #
-
-CC = gcc -g
+# Compiler options ------------------------------------------- #
+# ------------------------------------------------------------ #
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
-# Compiler to generate de final file (.a)
 GENERATE_LIB = ar rcs
+# Compiler to generate de final file (.a)
 # ar - Utility for create an maintain library files
 # r - Replace de old library by the new one created with your new files.
 # c - Create a new library if it did not exist.
 # s - Sort the library index for access faster to the functions.
 #	- If u use 's' is not necessary use ranlib
 
-# -------------------------- MAKEFILE INSTRUCTIONS --------------------------- #
-
-.PHONY: all bonus clean fclean re
-
+# Rules ------------------------------------------------------ #
+# ------------------------------------------------------------ #
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) $(INC_FILES)
-	$(GENERATE_LIB) $(NAME) $(OBJ_FILES)
+$(NAME): $(OBJS) $(INCL_FILES)
+	@$(GENERATE_LIB) $(NAME) $(OBJS)
+	@echo "$(GREEN)[+] 🧱 $(PROJECT) compiled$(END)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_LIBFT_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_LIBFT_DIR)
+	@$(CC) $(CFLAGS) -I./$(INCL_DIR) -c $< -o $@
 
-bonus: $(NAME) $(OBJ_BONUS_FILES)
-	$(GENERATE_LIB) $(NAME) $(OBJ_BONUS_FILES)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_LIBFT_DIR):
+	@mkdir -p $(OBJ_LIBFT_DIR)
 
 clean:
-	rm -fr $(SRC_DIR)/*.o *.d
+	@rm -fr $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(GREEN)[-]$(END) 🗑  $(PROJECT) deleted" 
 
 re: fclean all
+
+.PHONY: all clean fclean re

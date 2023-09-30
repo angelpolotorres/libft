@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_possnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 13:26:34 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/09/30 13:01:45 by apolo-to         ###   ########.fr       */
+/*   Created: 2023/09/30 16:30:46 by apolo-to          #+#    #+#             */
+/*   Updated: 2023/09/30 16:40:09 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * This ft checks if the char argument is an ascii character (0-127).
- * @param	int c	: The char argument.
- * @return	int		: (1) ASCII Char, (0) No ASCII char.
- */
-int	ft_isascii(int c)
+ * This ft checks if a str is a potencial number accepted by ft_atoi.
+ * @param	const_char* str	: The string.
+ * @return	int				: (1) Accepted, (0) No accepted.
+*/
+int	ft_possnum(const char *str)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (ft_issign(str[i]))
+	{
+		if (!ft_isdigit(str[i + 1]))
+			return (0);
+		i++;
+	}
+	if (!ft_isdigit(str[i]))
+		return (0);
+	return (1);
 }

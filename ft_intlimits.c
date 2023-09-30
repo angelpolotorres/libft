@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_intlimits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 20:07:27 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/09/30 13:15:33 by apolo-to         ###   ########.fr       */
+/*   Created: 2023/08/19 11:29:03 by apolo-to          #+#    #+#             */
+/*   Updated: 2023/09/30 16:21:08 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * This ft transform a string of digits to a integer. 
- * The symbol '-' is interpreted like a negative number.
- * @param	const_char* str		: A string of digits.
- * @return	int					: An (+-)integer. If it fails, it returns zero. 
+ * This ft checks if an str will exceed int limits before ft_atoi use.
+ * @param	char* str	: A string of digits.
+ * @return	int			: 1(ok), 0(exceed).
 */
-int	ft_atoi(const char *str)
+int	ft_intlimits(const char *str)
 {
-	int	i;
-	int	res;
-	int	sign;
+	int		i;
+	long	res;
+	long	sign;
 
 	i = 0;
 	res = 0;
@@ -31,8 +30,6 @@ int	ft_atoi(const char *str)
 		i++;
 	if (ft_issign(str[i]))
 	{
-		if (!ft_isdigit(str[i + 1]))
-			return (0);
 		if (str[i] == '-')
 			sign = -1;
 		i ++;
@@ -42,5 +39,8 @@ int	ft_atoi(const char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 	}
-	return (res * sign);
+	if (res > 2147483647 || res < -2147483648)
+		return (0);
+	else
+		return (1);
 }
