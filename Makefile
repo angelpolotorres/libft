@@ -1,12 +1,14 @@
 # Colors ----------------------------------------------------- #
 # ------------------------------------------------------------ #
-GREEN = \033[0;32m
+GREEN = \033[1;32m
+PURPLE = \033[1;35m
+RED = \033[1;31m
 END = \033[0m
 
 # Final program ---------------------------------------------- #
 # ------------------------------------------------------------ #
-NAME = libft.a
-PROJECT = libft
+EXEUTABLE_NAME = libft.a
+PROJECT_NAME = libft
 
 # Source files ----------------------------------------------- #
 # ------------------------------------------------------------ #
@@ -89,11 +91,11 @@ GENERATE_LIB = ar rcs
 
 # Rules ------------------------------------------------------ #
 # ------------------------------------------------------------ #
-all: $(NAME)
+all: $(EXEUTABLE_NAME)
 
-$(NAME): $(OBJS) $(INCL_FILES)
-	@$(GENERATE_LIB) $(NAME) $(OBJS)
-	@echo "$(GREEN)[+] 🧱 $(PROJECT) compiled$(END)"
+$(EXEUTABLE_NAME): $(OBJS) $(INCL_FILES)
+	@$(GENERATE_LIB) $(EXEUTABLE_NAME) $(OBJS)
+	@echo "$(PURPLE)[$(PROJECT_NAME)]\t-$(END) $(GREEN)📦 Compiled$(END)"
 
 $(OBJ_LIBFT_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_LIBFT_DIR)
 	@$(CC) $(CFLAGS) -I./$(INCL_DIR) -c $< -o $@
@@ -106,10 +108,11 @@ $(OBJ_LIBFT_DIR):
 
 clean:
 	@rm -fr $(OBJ_DIR)
+	@echo "$(PURPLE)[$(PROJECT_NAME)]\t-$(END) $(GREEN)🔥 Object files removed$(END)"
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "$(GREEN)[-]$(END) 🗑  $(PROJECT) deleted" 
+	@rm -f $(EXEUTABLE_NAME)
+	@echo "$(PURPLE)[$(PROJECT_NAME)]\t-$(END) $(GREEN)🔥 Executable removed$(END)"
 
 re: fclean all
 
