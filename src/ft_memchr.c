@@ -6,7 +6,7 @@
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:48:41 by apolo-to          #+#    #+#             */
-/*   Updated: 2023/03/16 13:14:08 by apolo-to         ###   ########.fr       */
+/*   Updated: 2024/01/03 10:58:23 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_memchr(void *buf, int ch, size_t length)
 	str = (unsigned char *)buf;
 	c = (unsigned char)ch;
 	while (i < length)
-	{	
+	{
 		if (str[i] == c)
 			return ((void *)&str[i]);
 		i++;

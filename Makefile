@@ -12,7 +12,7 @@ PROJECT = libft
 # ------------------------------------------------------------ #
 SRCS = $(SRC_FILES)
 
-SRC_DIR = .
+SRC_DIR = src
 SRC_FILES = $(addprefix $(SRC_DIR)/, $(SRC_CFILES)) 
 SRC_CFILES = \
 		ft_isalpha.c \
@@ -72,7 +72,7 @@ OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_LIBFT_DIR)/%.o, $(SRCS))
 
 # Header files ----------------------------------------------- #
 # ------------------------------------------------------------ #
-INCL_DIR = .
+INCL_DIR = include
 INCL_FILES = $(INCL_DIR)/libft.h
 
 # Compiler options ------------------------------------------- #
