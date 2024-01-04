@@ -94,7 +94,7 @@ all: $(EXEUTABLE_NAME)
 
 $(EXEUTABLE_NAME): $(OBJS) $(INCL_FILES)
 	@$(GENERATE_LIB) $(EXEUTABLE_NAME) $(OBJS)
-	@echo "$(PURPLE)[$(PROJECT_NAME)] -$(END) $(GREEN)📦 Compiled$(END)"
+	@echo "📦$(PURPLE) [$(PROJECT_NAME)]$(END)$(GREEN)  Compiled$(END)"
 
 $(OBJ_LIBFT_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR) $(OBJ_LIBFT_DIR)
 	@$(CC) $(CFLAGS) -I./$(INCL_DIR) -c $< -o $@
@@ -107,11 +107,10 @@ $(OBJ_LIBFT_DIR):
 
 clean:
 	@rm -fr $(OBJ_DIR)
-	@echo "$(PURPLE)[$(PROJECT_NAME)] -$(END) $(GREEN)🔥 Object files removed$(END)"
+	@echo "🔥$(PURPLE) [$(PROJECT_NAME)]$(END)$(GREEN)  Removed$(END)"
 
 fclean: clean
 	@rm -f $(EXEUTABLE_NAME)
-	@echo "$(PURPLE)[$(PROJECT_NAME)] -$(END) $(GREEN)🔥 Executable removed$(END)"
 
 re: fclean all
 
