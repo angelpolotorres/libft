@@ -2,6 +2,7 @@
 # ------------------------------------------------------------ #
 GREEN = \033[1;32m
 PURPLE = \033[1;35m
+RED = \033[31m
 END = \033[0m
 
 # Final program ---------------------------------------------- #
@@ -107,7 +108,7 @@ $(OBJ_LIBFT_DIR):
 
 clean:
 	@rm -fr $(OBJ_DIR)
-	@printf "${PURPLE}%-18s${END}${GREEN}%s${END}\n" "🔥 [$(PROJECT_NAME)]" "Removed"
+	@printf "${PURPLE}%-18s${END}${RED}%s${END}\n" "🔥 [$(PROJECT_NAME)]" "Removed"
 
 fclean: clean
 	@rm -f $(EXEUTABLE_NAME)
