@@ -6,7 +6,7 @@
 /*   By: apolo-to <apolo-to@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:08:40 by apolo-to          #+#    #+#             */
-/*   Updated: 2024/01/06 18:29:20 by apolo-to         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:10:59 by apolo-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_putnbr_fd(int num, int file_descriptor);
 void	ft_putstr_fd(char *str, int file_descriptor);
 char	**ft_split(const char *str, char sep);
 char	*ft_strchr(const char *str, int c);
+int		ft_strcmp(const char *str_1, const char *str_2);
 char	*ft_strdup(const char *str);
 void	ft_striteri(char *str, void (*func)(unsigned int, char*));
 char	*ft_strjoin(char const *str_1, char const *str_2);
